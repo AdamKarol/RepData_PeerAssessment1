@@ -4,26 +4,34 @@ output:
   html_document:
     keep_md: true
 ---
+```{r}
 
 setwd("D:/Adam Karolewski/Studia podyplomowe/Coursera/Data Science Specialization/5 Reproducible Research/Project1/RepData_PeerAssessment1/")
+```
 
+```{r}
 ##1. Code for reading in the dataset and/or processing the data
 unzip("activity.zip", exdir = ".")
 df<-read.csv("activity.csv")
+```
 
+```{r}
 ##2. Histogram of the total number of steps taken each day
 df2<-aggregate(steps~date,df,sum)
 hist(df2$steps,breaks=10, main="",xlab="")
 abline(v = mean(df2$steps), col = "magenta", lwd = 2)
 title("Histogram of steps per day",xlab="steps")
 text(mean(df2$steps), 15,paste("mean =",ceiling(mean(df2$steps))),col = "magenta", adj = c(-.1, .1))
+```
 
+```{r}
 ##3. Mean and median number of steps taken each day
-###Mean
 ceiling(mean(df2$steps))
-###Median
 ceiling(median(df2$steps))
+```
 
+
+```{r, echo=TRUE}
 ##4. Time series plot of the average number of steps taken
 df2<-aggregate(steps~interval,df,mean)
 plot(steps~interval,data=df2, type = "l")
@@ -60,9 +68,12 @@ library(lattice)
 library(lubridate)
 df_i$date<-as.Date(df_i$date)
 df_i$weekday<-wday(df_i$date-1)
-table(df_i$weekday)
+df_i$weekday_name<-""
 df_i[df_i$weekday>5,]$weekday_name<-"weekend"
 df_i[df_i$weekday<6,]$weekday_name<-"weekday"
 df_i$weekday_name<-as.factor(df_i$weekday_name)
 df4<-aggregate(steps~interval+weekday_name,df_i,mean)
 xyplot(steps~interval|weekday_name,data=df4, type = "l",, layout=c(1,2))
+```
+
+
