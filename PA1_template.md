@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 setwd("D:/Adam Karolewski/Studia podyplomowe/Coursera/Data Science Specialization/5 Reproducible Research/Project1/RepData_PeerAssessment1/")
 
